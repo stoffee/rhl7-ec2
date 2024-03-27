@@ -30,7 +30,7 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.rhel7.id
   instance_type = "t3.medium"
   key_name = "cdunlap-sandbox-aws"
-  name = random_pet.server.id
+  #name = random_pet.server.id
 
   tags = {
     Name = random_pet.server.id
