@@ -55,6 +55,6 @@ data "template_file" "cloud-init" {
   template = file("cloud-init.tpl")
 
   vars = {
-    boinc_project_id = var.boinc_project_id
+    #boinc_project_id = var.boinc_project_id
   }
 }
