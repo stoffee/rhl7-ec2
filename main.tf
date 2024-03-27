@@ -22,17 +22,14 @@ provider "aws" {
 }*//
 resource "random_pet" "server" {
 }
-resource "aws_instance" "demo" {
-  ami = data.aws_ami.rhel7.id
 
-  instance_type = "t2.medium"
-  #instance_type = "t2.small"
-
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.rhel7.id
+  instance_type = "t3.medium"
+  name = data.random_pet.server.id
 
   tags = {
-    Name = random_pet.server.id
-    Owner = "cd"
-    TTL   = "24"
+    Name = "cdunlap"
   }
 }
 
