@@ -44,6 +44,11 @@ resource "aws_instance" "rosettaathome" {
 
   key_name = var.ssh_key_name
 
+  network_interface {
+    network_interface_id = aws_network_interface.foo.id
+    device_index         = 0
+  }
+
   tags = {
     Name = random_pet.server.id
     Owner = "chrisd"
