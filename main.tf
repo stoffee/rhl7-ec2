@@ -4,7 +4,7 @@ provider "aws" {
 
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  ami = data.aws_ami.rhel7_5.id
+  ami = data.aws_ami.rhel7.id
 
   name = random_pet.server.id
 
@@ -23,10 +23,13 @@ module "ec2_instance" {
 resource "random_pet" "server" {
 }
 
-data "aws_ami" "rhel7_5" {
+data "aws_ami" "rhel7" {
   most_recent = true
 
-  owners = ["309956199498"] // Red Hat's account ID.
+  filter {
+    name   = "name"
+    values = ["RHEL-7*GA*Hourly*"]
+  }
 
   filter {
     name   = "architecture"
@@ -34,17 +37,9 @@ data "aws_ami" "rhel7_5" {
   }
 
   filter {
-    name   = "root-device-type"
-    values = ["ebs"]
+    name   = "state"
+    values = ["available"]
   }
 
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  filter {
-    name   = "name"
-    values = ["RHEL-7.5*"]
-  }
+  owners = ["309956199498"] # Red Hat
 }
