@@ -29,10 +29,11 @@ resource "random_pet" "server" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.rhel7.id
   instance_type = "t3.medium"
-  name = data.random_pet.server.id
+  key_name = "cdunlap-sandbox-aws"
+  #name = data.random_pet.server.id
 
   tags = {
-    Name = "cdunlap"
+    Name = data.random_pet.server.id
   }
 }
 
