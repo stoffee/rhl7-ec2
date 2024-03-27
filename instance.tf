@@ -35,12 +35,12 @@ data "aws_ami" "rhel7" {
   owners = ["309956199498"] # Red Hat
 }
 
-resource "aws_instance" "rosettaathome" {
+resource "aws_instance" "rhel7_vault" {
  ami =  data.aws_ami.rhel7.id
  #ami =  data.aws_ami.ubuntu.id
 
    instance_type = var.instance_type
-   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+  # vpc_security_group_ids = [aws_security_group.allow_ssh.id]
 
   key_name = var.ssh_key_name
 
