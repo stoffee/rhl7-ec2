@@ -2,7 +2,7 @@ provider "aws" {
   region = "us-west-2"
 }
 
-module "ec2_instance" {
+//*module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   ami = data.aws_ami.rhel7.id
 
@@ -19,8 +19,21 @@ module "ec2_instance" {
     Terraform   = "true"
     Environment = "dev"
   }
-}
+}*//
 resource "random_pet" "server" {
+}
+resource "aws_instance" "demo" {
+  ami = data.aws_ami.rhel7.id
+
+  instance_type = "t2.medium"
+  #instance_type = "t2.small"
+
+
+  tags = {
+    Name = random_pet.server.id
+    Owner = "cd"
+    TTL   = "24"
+  }
 }
 
 data "aws_ami" "rhel7" {
