@@ -45,7 +45,7 @@ resource "aws_instance" "rosettaathome" {
   key_name = var.ssh_key_name
 
   network_interface {
-    network_interface_id = aws_network_interface.foo.id
+    network_interface_id = aws_network_interface.rhel7.id
     device_index         = 0
   }
 
