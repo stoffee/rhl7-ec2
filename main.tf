@@ -5,7 +5,7 @@ provider "aws" {
 resource "random_pet" "server" {
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "rhel7_vault" {
   ami           = data.aws_ami.rhel7.id
   instance_type = "t3.medium"
   key_name = "cdunlap-sandbox-aws"
