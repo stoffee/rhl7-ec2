@@ -11,6 +11,7 @@ resource "aws_instance" "web" {
   key_name = "cdunlap-sandbox-aws"
   #name = random_pet.server.id
 associate_public_ip_address = true
+vpc_security_group_ids = ["sg-0381b141d26f97c58"]
 
   tags = {
     Name = random_pet.server.id
