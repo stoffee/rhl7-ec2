@@ -12,7 +12,7 @@ module "ec2_instance" {
   key_name               = "cdunlap-sandbox-aws"
   monitoring             = false
   vpc_security_group_ids = ["sg-0381b141d26f97c58"]
-  subnet_id              = "vpc-0b1e9d40163ab59fc"
+  subnet_id              = "subnet-09d65c88eea40de1b"
   associate_public_ip_address = true
 
   tags = {
