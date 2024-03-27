@@ -40,14 +40,14 @@ resource "aws_instance" "rhel7_vault" {
  #ami =  data.aws_ami.ubuntu.id
 
    instance_type = var.instance_type
-  # vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
 
   key_name = var.ssh_key_name
 
-  network_interface {
-    network_interface_id = aws_network_interface.rhel7.id
-    device_index         = 0
-  }
+  #network_interface {
+  #  network_interface_id = aws_network_interface.rhel7.id
+  #  device_index         = 0
+  #}
 
   tags = {
     Name = random_pet.server.id
