@@ -3,13 +3,13 @@
 #}
 variable "ssh_key_name" {
   description = "You AWS SSH KeyName"
-  default = "cdunlap-sandbox-aws"
+  default     = "cdunlap-sandbox-aws"
 }
 
 #variable "aws_access_key" {}
 #variable "aws_secret_key" {}
 #variable "aws_region" {}
 variable "instance_type" {
-  default = "t3.medium"
+  default     = "t3.medium"
   description = "Please be careful with cost!!!!"
 }

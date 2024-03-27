@@ -36,13 +36,13 @@ data "aws_ami" "rhel7" {
 }
 
 resource "aws_instance" "rhel7_vault" {
- ami =  data.aws_ami.rhel7.id
- #ami =  data.aws_ami.ubuntu.id
+  ami = data.aws_ami.rhel7.id
+  #ami =  data.aws_ami.ubuntu.id
 
-   instance_type = var.instance_type
-   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-
-  key_name = var.ssh_key_name
+  instance_type               = var.instance_type
+  vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
+  associate_public_ip_address = true
+  key_name                    = var.ssh_key_name
 
   #network_interface {
   #  network_interface_id = aws_network_interface.rhel7.id
@@ -50,7 +50,7 @@ resource "aws_instance" "rhel7_vault" {
   #}
 
   tags = {
-    Name = random_pet.server.id
+    Name  = random_pet.server.id
     Owner = "chrisd"
     TTL   = "24"
   }

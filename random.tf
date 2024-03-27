@@ -1,1 +1,1 @@
-resource "random_uuid" "uuid" { }
+resource "random_uuid" "uuid" {}
